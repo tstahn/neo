@@ -1,0 +1,13 @@
+/* ==========================================================================
+   #CLEARFIX
+   ========================================================================== */
+
+/* Modifications (c) 2021 Tobias Stahn */
+
+/**
+ * Attach our clearfix mixin to a utility class.
+ */
+
+.u-clearfix {
+  @include neo-clearfix();
+}

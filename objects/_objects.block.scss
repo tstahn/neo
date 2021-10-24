@@ -1,0 +1,69 @@
+/* ==========================================================================
+   #BLOCK
+   ========================================================================== */
+
+/* Modifications (c) 2021 Tobias Stahn */
+
+$neo-block-spacing:       $neo-global-spacing-unit !default;
+$neo-block-tiny-spacing:  $neo-global-spacing-unit-tiny !default;
+$neo-block-small-spacing: $neo-global-spacing-unit-small !default;
+$neo-block-large-spacing: $neo-global-spacing-unit-large !default;
+$neo-block-huge-spacing:  $neo-global-spacing-unit-huge !default;
+
+/**
+ * Stacked image-with-text object. A simple abstraction to cover a very commonly
+ * occurring design pattern.
+ */
+
+.o-block {
+  display: block;
+  text-align: center;
+}
+
+  .o-block__img {
+    margin-bottom: $neo-block-spacing;
+
+
+    /* Size variants
+       ====================================================================== */
+
+    .o-block--flush > & {
+      margin-bottom: 0;
+    }
+
+    .o-block--tiny > & {
+      margin-bottom: $neo-block-tiny-spacing;
+    }
+
+    .o-block--small > & {
+      margin-bottom: $neo-block-small-spacing;
+    }
+
+    .o-block--large > & {
+      margin-bottom: $neo-block-large-spacing;
+    }
+
+    .o-block--huge > & {
+      margin-bottom: $neo-block-huge-spacing;
+    }
+
+  }
+
+  .o-block__body {
+    display: block;
+  }
+
+
+
+
+
+/* Alignment variants
+   ========================================================================== */
+
+.o-block--right {
+  text-align: right;
+}
+
+.o-block--left {
+  text-align: left;
+}
