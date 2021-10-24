@@ -287,7 +287,7 @@ We'd love to see that the framework gets extended through the contribution of yo
 
 ## Prerequisites
 
-Make sure you have at least Sass v3.3 installed.
+Make sure you have at least Dart Sass 1.23.0 installed.
 
 ## Credits
 
