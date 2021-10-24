@@ -4,6 +4,12 @@
 
 /* Modifications (c) 2021 Tobias Stahn */
 
+
+
+@use "sass:math";
+
+
+
 // A list of cropping ratios that get generated as modifier classes.
 // You should predefine it with only the ratios and names your project needs.
 //
@@ -139,7 +145,7 @@ $neo-crops: (
     }
 
     .o-crop--#{$crop-name} {
-      padding-bottom: ($consequent/$antecedent) * 100%;
+      padding-bottom: math.div($consequent, $antecedent) * 100%;
     }
 
   }
