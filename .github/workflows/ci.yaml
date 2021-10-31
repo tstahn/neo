@@ -9,19 +9,23 @@ on:
       - master
 jobs:
   build:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
-          cache: npm
+          node-version: '14'
+          cache: 'npm'
       - name: Install dependencies
-        run: npm install
-      - name: Compile
+        run: |
+          if [ -z "${NODE_ENV:-}" ]; then export NODE_ENV=test; fi
+          export PATH="~/@tstahn/neo/node_modules/.bin:$PATH"
+          npm ci
+      - name: Compile Sass
         run: ./node_modules/.bin/sass example.main.scss test/example.main.css --no-source-map
-      - name: Test
+      - name: Run test
         run: npm test
       - name: Status
         run: |
