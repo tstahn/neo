@@ -9,7 +9,7 @@ on:
       - master
 jobs:
   build:
-    name: Test
+    name: Unit Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,16 +18,16 @@ jobs:
         with:
           node-version: '14'
           cache: 'npm'
-      - name: Install dependencies
+      - name: Run npm install
         run: |
           if [ -z "${NODE_ENV:-}" ]; then export NODE_ENV=test; fi
           export PATH="~/@tstahn/neo/node_modules/.bin:$PATH"
           npm ci
-      - name: Compile Sass
+      - name: Run sass
         run: ./node_modules/.bin/sass example.main.scss test/example.main.css --no-source-map
-      - name: Run test
+      - name: Run npm test
         run: npm test
-      - name: Status
+      - name: Run git status
         run: |
           git status
           git status | grep -q "nothing to commit, working tree clean"
