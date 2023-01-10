@@ -1,6 +1,6 @@
 {
   "name": "@tstahn/neo",
-  "version": "6.3.1",
+  "version": "6.3.2",
   "description": "Extensible, scalable, Sass-based, OOCSS framework for large and long-lasting UI projects.",
   "main": "example.main.scss",
   "scripts": {
