@@ -6,7 +6,7 @@
 
 
 
-@use "sass:math";
+@use 'sass:math';
 
 
 
@@ -93,22 +93,18 @@ $neo-widths-breakpoint-separator: \@ !default;
 // @include widths(3 4, -sm);
 
 @mixin neo-widths($columns, $breakpoint: null) {
-
   // Loop through the number of columns for each denominator of our fractions.
   @each $denominator in $columns {
-
     // Begin creating a numerator for our fraction up until we hit the
     // denominator.
     @for $numerator from 1 through $denominator {
-
       // Build a class in the format `.u-3/4[@<breakpoint>]`.
 
       .u-#{$numerator}#{$neo-widths-delimiter}#{$denominator}#{$breakpoint} {
         width: math.div($numerator, $denominator) * 100% !important;
       }
 
-      @if ($neo-offsets == true) {
-
+      @if $neo-offsets == true {
         /**
          * 1. Reset any leftover or conflicting `left`/`right` values.
          */
@@ -128,15 +124,11 @@ $neo-widths-breakpoint-separator: \@ !default;
           right: math.div($numerator, $denominator) * 100% !important;
           left: auto !important; /* [1] */
         }
-
       }
-
     }
-
   }
 
-  @if ($neo-offsets == true and $breakpoint != null) {
-
+  @if $neo-offsets == true and $breakpoint {
     // Create auto push and pull classes.
 
     .u-push-none#{$breakpoint} {
@@ -146,9 +138,7 @@ $neo-widths-breakpoint-separator: \@ !default;
     .u-pull-none#{$breakpoint} {
       right: auto !important;
     }
-
   }
-
 }
 
 
@@ -179,14 +169,10 @@ $neo-widths-breakpoint-separator: \@ !default;
  * <div class="u-3/12@mobile">
  */
 
-@if (variable-exists(mq-breakpoints)) {
-
+@if variable-exists(mq-breakpoints) {
   @each $neo-bp-name, $neo-bp-value in $mq-breakpoints {
-
     @include mq($from: $neo-bp-name) {
       @include neo-widths($neo-fractions, #{$neo-widths-breakpoint-separator}#{$neo-bp-name});
     }
-
   }
-
 }

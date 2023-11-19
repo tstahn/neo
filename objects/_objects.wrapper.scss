@@ -11,15 +11,15 @@ $neo-wrapper-padding: $neo-global-spacing-unit !default;
  * Page-level constraining and wrapping elements.
  */
 
-@if (type-of($neo-wrapper-width) != number) {
-  @error "`#{$neo-wrapper-width}` needs to be a number.";
+@if type-of($neo-wrapper-width) != number {
+  @error '`#{$neo-wrapper-width}` needs to be a number.';
 }
 
 .o-wrapper {
-  @include neo-clearfix();
+  @include neo-clearfix;
   padding-right: $neo-wrapper-padding;
-  padding-left:  $neo-wrapper-padding;
+  padding-left: $neo-wrapper-padding;
   margin-right: auto;
-  margin-left:  auto;
+  margin-left: auto;
   max-width: $neo-wrapper-width;
 }

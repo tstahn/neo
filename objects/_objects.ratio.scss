@@ -6,7 +6,7 @@
 
 
 
-@use "sass:math";
+@use 'sass:math';
 
 
 
@@ -25,9 +25,9 @@
 //   ) !default;
 
 $neo-ratios: (
-  "2\\:1"   : (2:1),
-  "4\\:3"   : (4:3),
-  "16\\:9"  : (16:9)
+  '2\\:1'   : (2:1),
+  '4\\:3'   : (4:3),
+  '16\\:9'  : (16:9)
 ) !default;
 
 
@@ -46,26 +46,22 @@ $neo-ratios: (
   display: block;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     padding-bottom: 100%; /* [1] */
   }
-
 }
 
-  .o-ratio__content,
-  .o-ratio > iframe,
-  .o-ratio > embed,
-  .o-ratio > object {
-    position: absolute;
-    top:    0;
-    bottom: 0;
-    left:   0;
-    right:  0;
-    height: 100%;
-    width:  100%;
-  }
+.o-ratio__content,
+.o-ratio > iframe,
+.o-ratio > embed,
+.o-ratio > object {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
 
 
 
@@ -82,23 +78,19 @@ $neo-ratios: (
  */
 
 @each $ratio-name, $ratio-value in $neo-ratios {
-
   @each $antecedent, $consequent in $ratio-value {
-
-    @if (type-of($antecedent) != number) {
-      @error "`#{$antecedent}` needs to be a number.";
+    @if type-of($antecedent) != number {
+      @error '`#{$antecedent}` needs to be a number.';
     }
 
-    @if (type-of($consequent) != number) {
-      @error "`#{$consequent}` needs to be a number.";
+    @if type-of($consequent) != number {
+      @error '`#{$consequent}` needs to be a number.';
     }
 
     .o-ratio--#{$ratio-name}:before {
       padding-bottom: math.div($consequent, $antecedent) * 100%;
     }
-
   }
-
 }
 
 
@@ -122,5 +114,4 @@ $neo-ratios: (
     max-width: 100%;
     width: auto;
   }
-
 }

@@ -26,16 +26,14 @@ img {
 
 $neo-static-images: true !default;
 
-  @if ($neo-static-images == true) {
-
-  /**
-   * If a `width` and/or `height` attribute has been explicitly defined, let’s
-   * not make the image fluid.
-   */
+/**
+ * If a `width` and/or `height` attribute has been explicitly defined, let’s
+ * not make the image fluid.
+ */
+@if $neo-static-images == true {
 
   img[width],
   img[height] {
     max-width: none;
   }
-
 }
