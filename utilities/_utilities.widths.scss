@@ -128,7 +128,7 @@ $neo-widths-breakpoint-separator: \@ !default;
     }
   }
 
-  @if $neo-offsets == true and $breakpoint {
+  @if $neo-offsets == true and $breakpoint != null {
     // Create auto push and pull classes.
 
     .u-push-none#{$breakpoint} {
