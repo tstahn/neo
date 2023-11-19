@@ -58,7 +58,7 @@ $neo-spacing-directions: null !default;
 
 // If the ‘normal’ spacings partial is not included, we provide an error message
 // to indicate this.
-@if $neo-spacing-directions {
+@if $neo-spacing-directions == null {
   @error 'In order to use responsive spacings, you also need to include `_utilities.spacings.scss`!';
 } @else {
   // When using Sass-MQ, this defines the separator for the breakpoints suffix
@@ -80,7 +80,7 @@ $neo-spacing-directions: null !default;
   /* stylelint-disable max-nesting-depth */
 
   // Don't output anything if no responsive spacings are defined.
-  @if $neo-responsive-spacing-properties {
+  @if $neo-responsive-spacing-properties != null {
     @each $property-namespace, $property in $neo-responsive-spacing-properties {
       @each $direction-namespace, $direction-rules in $neo-responsive-spacing-directions {
         @each $size-namespace, $size in $neo-responsive-spacing-sizes {

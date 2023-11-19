@@ -49,6 +49,7 @@
     "stylistic/value-list-comma-newline-after": "always-multi-line",
     "stylistic/value-list-comma-newline-before": "never-multi-line",
 
+    "scss/at-if-no-null": null,
     "scss/at-import-no-partial-leading-underscore": null,
     "scss/comment-no-empty": null,
     "scss/dollar-variable-colon-space-after": "at-least-one-space",
