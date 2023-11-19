@@ -6,7 +6,7 @@
 
 
 
-@use "sass:math";
+@use 'sass:math';
 
 
 
@@ -25,9 +25,9 @@
 //   ) !default;
 
 $neo-crops: (
-  "2\\:1"   : (2:1),
-  "4\\:3"   : (4:3),
-  "16\\:9"  : (16:9)
+  '2\\:1'   : (2:1),
+  '4\\:3'   : (4:3),
+  '16\\:9'  : (16:9)
 ) !default;
 
 
@@ -46,77 +46,74 @@ $neo-crops: (
   overflow: hidden; /* [2] */
 }
 
-  /**
+/**
    * Apply this class to the content (usually `img`) that needs cropping.
    *
    * 1. Image’s default positioning is top-left in the cropping box.
    * 2. Make sure the media doesn’t stop itself too soon.
    */
 
-  .o-crop__content {
-    position: absolute;
-    top:  0; /* [1] */
-    left: 0; /* [1] */
-    max-width: none; /* [2] */
-  }
+.o-crop__content {
+  position: absolute;
+  top: 0; /* [1] */
+  left: 0; /* [1] */
+  max-width: none; /* [2] */
+}
 
 
 
-  /**
+/**
    * We can position the media in different locations within the cropping area.
    */
 
-  .o-crop__content--left-top {
-    left: 0;
-  }
+.o-crop__content--left-top {
+  left: 0;
+}
 
-  .o-crop__content--left-center {
-    top: 50%;
-    transform: translateY(-50%);
-  }
+.o-crop__content--left-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-  .o-crop__content--left-bottom {
-    top: auto;
-    bottom: 0;
-  }
+.o-crop__content--left-bottom {
+  top: auto;
+  bottom: 0;
+}
 
-  .o-crop__content--right-top {
-    right: 0;
-    left: auto;
-  }
+.o-crop__content--right-top {
+  right: 0;
+  left: auto;
+}
 
-  .o-crop__content--right-center {
-    top: 50%;
-    right: 0;
-    left: auto;
-    transform: translateY(-50%);
-  }
+.o-crop__content--right-center {
+  top: 50%;
+  right: 0;
+  left: auto;
+  transform: translateY(-50%);
+}
 
-  .o-crop__content--right-bottom {
-    top: auto;
-    right: 0;
-    bottom: 0;
-    left: auto;
-  }
+.o-crop__content--right-bottom {
+  inset: auto 0 0 auto;
+}
 
-  .o-crop__content--center-top {
-    left: 50%;
-    transform: translateX(-50%);
-  }
+.o-crop__content--center-top {
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-  .o-crop__content--center,
-  .o-crop__content--center-center {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.o-crop__content--center,
+.o-crop__content--center-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .o-crop__content--center-bottom {
-    top: auto;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+.o-crop__content--center-bottom {
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 
 
@@ -133,23 +130,19 @@ $neo-crops: (
  */
 
 @each $crop-name, $crop-value in $neo-crops {
-
   @each $antecedent, $consequent in $crop-value {
-
-    @if (type-of($antecedent) != number) {
-      @error "`#{$antecedent}` needs to be a number.";
+    @if type-of($antecedent) != number {
+      @error '`#{$antecedent}` needs to be a number.';
     }
 
-    @if (type-of($consequent) != number) {
-      @error "`#{$consequent}` needs to be a number.";
+    @if type-of($consequent) != number {
+      @error '`#{$consequent}` needs to be a number.';
     }
 
     .o-crop--#{$crop-name} {
       padding-bottom: math.div($consequent, $antecedent) * 100%;
     }
-
   }
-
 }
 
 
@@ -169,5 +162,4 @@ $neo-crops: (
     min-height: 100%;
     min-width: 100%;
   }
-
 }

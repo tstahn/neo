@@ -58,69 +58,46 @@ $neo-spacing-directions: null !default;
 
 // If the ‘normal’ spacings partial is not included, we provide an error message
 // to indicate this.
-@if $neo-spacing-directions == null {
-  @error "In order to use responsive spacings, you also need to include `_utilities.spacings.scss`!";
-}
-@else {
+@if $neo-spacing-directions {
+  @error 'In order to use responsive spacings, you also need to include `_utilities.spacings.scss`!';
+} @else {
+  // When using Sass-MQ, this defines the separator for the breakpoints suffix
+  // in the class name. By default, we are generating the responsive suffixes
+  // for the classes with a `@` symbol so you get classes like:
+  //
+  //   <div class="u-margin-bottom@mobile">
+  //
+  // Be aware that since the `@` symbol is a reserved symbol in CSS, it has to be
+  // escaped with a `\`. In the markup though, you write your classes without the
+  // backslash (e.g. `u-margin-bottom@mobile`).
+  $neo-widths-breakpoint-separator:   \@ !default;
+  $neo-responsive-spacing-directions: null !default;
+  $neo-responsive-spacing-properties: null !default;
+  $neo-responsive-spacing-sizes:      null !default;
 
 
 
-// When using Sass-MQ, this defines the separator for the breakpoints suffix
-// in the class name. By default, we are generating the responsive suffixes
-// for the classes with a `@` symbol so you get classes like:
-//
-//   <div class="u-margin-bottom@mobile">
-//
-// Be aware that since the `@` symbol is a reserved symbol in CSS, it has to be
-// escaped with a `\`. In the markup though, you write your classes without the
-// backslash (e.g. `u-margin-bottom@mobile`).
-$neo-widths-breakpoint-separator: \@ !default;
+  /* stylelint-disable max-nesting-depth */
 
+  // Don't output anything if no responsive spacings are defined.
+  @if $neo-responsive-spacing-properties {
+    @each $property-namespace, $property in $neo-responsive-spacing-properties {
+      @each $direction-namespace, $direction-rules in $neo-responsive-spacing-directions {
+        @each $size-namespace, $size in $neo-responsive-spacing-sizes {
+          @each $neo-bp-name, $neo-bp-value in $mq-breakpoints {
+            @include mq($from: $neo-bp-name) {
 
-
-$neo-responsive-spacing-directions: null !default;
-
-$neo-responsive-spacing-properties: null !default;
-
-$neo-responsive-spacing-sizes: null !default;
-
-
-
-/* stylelint-disable max-nesting-depth */
-
-// Don't output anything if no responsive spacings are defined.
-@if ($neo-responsive-spacing-properties != null) {
-
-  @each $property-namespace, $property in $neo-responsive-spacing-properties {
-
-    @each $direction-namespace, $direction-rules in $neo-responsive-spacing-directions {
-
-      @each $size-namespace, $size in $neo-responsive-spacing-sizes {
-
-        @each $neo-bp-name, $neo-bp-value in $mq-breakpoints {
-
-          @include mq($from: $neo-bp-name) {
-
-            .u-#{$property-namespace}#{$direction-namespace}#{$size-namespace}#{$neo-widths-breakpoint-separator}#{$neo-bp-name} {
-
-              @each $direction in $direction-rules {
-                #{$property}#{$direction}: $size !important;
+              .u-#{$property-namespace}#{$direction-namespace}#{$size-namespace}#{$neo-widths-breakpoint-separator}#{$neo-bp-name} {
+                @each $direction in $direction-rules {
+                  #{$property}#{$direction}: $size !important;
+                }
               }
-
             }
-
           }
-
         }
-
       }
-
     }
-
   }
 
-}
-
-/* stylelint-enable max-nesting-depth */
-
+  /* stylelint-enable max-nesting-depth */
 }

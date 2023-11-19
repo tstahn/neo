@@ -79,18 +79,17 @@ $neo-use-markup-fix: false !default;
 
 .o-layout {
   display: block; /* [1] */
-  margin:  0; /* [2] */
+  margin: 0; /* [2] */
   padding: 0; /* [2] */
   list-style: none; /* [1] */
   margin-left: -$neo-layout-gutter; /* [3] */
 
-  @if ($neo-use-markup-fix == false) {
+  @if $neo-use-markup-fix == false {
     font-size: 0;
   }
-
 }
 
-  /**
+/**
    * 1. Required in order to combine fluid widths with fixed gutters.
    * 2. Allows us to manipulate grids vertically, with text-level properties,
    *    etc.
@@ -102,19 +101,18 @@ $neo-use-markup-fix: false !default;
    * 6. Fallback for old IEs not supporting `rem` values.
    */
 
-  .o-layout__item {
-    box-sizing: border-box; /* [1] */
-    display: inline-block; /* [2] */
-    vertical-align: top; /* [3] */
-    width: 100%; /* [4] */
-    padding-left: $neo-layout-gutter; /* [5] */
+.o-layout__item {
+  box-sizing: border-box; /* [1] */
+  display: inline-block; /* [2] */
+  vertical-align: top; /* [3] */
+  width: 100%; /* [4] */
+  padding-left: $neo-layout-gutter; /* [5] */
 
-    @if ($neo-use-markup-fix == false) {
-      font-size: $neo-global-font-size; /* [6] */
-      font-size: 1rem;
-    }
-
+  @if $neo-use-markup-fix == false {
+    font-size: $neo-global-font-size; /* [6] */
+    font-size: 1rem;
   }
+}
 
 
 
@@ -129,7 +127,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     padding-left: 0;
   }
-
 }
 
 
@@ -139,7 +136,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     padding-left: $neo-layout-tiny-gutter;
   }
-
 }
 
 
@@ -149,7 +145,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     padding-left: $neo-layout-small-gutter;
   }
-
 }
 
 
@@ -159,7 +154,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     padding-left: $neo-layout-large-gutter;
   }
-
 }
 
 
@@ -169,7 +163,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     padding-left: $neo-layout-huge-gutter;
   }
-
 }
 
 
@@ -188,7 +181,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     vertical-align: middle;
   }
-
 }
 
 
@@ -201,7 +193,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     vertical-align: bottom;
   }
-
 }
 
 
@@ -230,7 +221,6 @@ $neo-use-markup-fix: false !default;
   &.o-layout--left {
     justify-content: flex-start;
   }
-
 }
 
 
@@ -250,7 +240,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     text-align: left;
   }
-
 }
 
 
@@ -264,7 +253,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     text-align: left;
   }
-
 }
 
 
@@ -279,7 +267,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     text-align: left;
   }
-
 }
 
 
@@ -293,7 +280,6 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     direction: ltr;
   }
-
 }
 
 
@@ -312,5 +298,4 @@ $neo-use-markup-fix: false !default;
   > .o-layout__item {
     width: auto;
   }
-
 }

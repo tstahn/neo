@@ -18,14 +18,13 @@ $neo-box-huge-padding:  $neo-global-spacing-unit-huge !default;
  */
 
 .o-box {
-  @include neo-clearfix();
+  @include neo-clearfix;
   display: block; /* [1] */
   padding: $neo-box-padding;
 
   > :last-child {
     margin-bottom: 0;
   }
-
 }
 
 

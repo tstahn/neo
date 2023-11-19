@@ -2,7 +2,7 @@
    #BUTTONS
    ========================================================================== */
 
-/* Modifications (c) 2021 Tobias Stahn */
+// Modifications (c) 2021 Tobias Stahn
 
 /**
  * This is an example component. Extend neo by building your own components
@@ -13,13 +13,10 @@ $neo-button-padding-vertical:         $neo-global-spacing-unit-small !default;
 $neo-button-padding-horizontal:       $neo-global-spacing-unit !default;
 $neo-button-transition:               $global-transition !default;
 $neo-button-radius:                   $global-radius !default;
-
 $neo-button-small-padding-vertical:   $neo-global-spacing-unit-tiny !default;
 $neo-button-small-padding-horizontal: $neo-global-spacing-unit-small !default;
-
 $neo-button-large-padding-vertical:   $neo-global-spacing-unit !default;
 $neo-button-large-padding-horizontal: $neo-global-spacing-unit-large !default;
-
 $neo-button-ghost-border-width:       2px;
 
 /**
@@ -65,7 +62,6 @@ $neo-button-ghost-border-width:       2px;
   &:focus {
     background-color: #3774a2;
   }
-
 }
 
 
@@ -84,7 +80,6 @@ $neo-button-ghost-border-width:       2px;
   &:focus {
     background-color: #1d2733;
   }
-
 }
 
 
@@ -104,7 +99,6 @@ $neo-button-ghost-border-width:       2px;
   &:focus {
     color: #3774a2;
   }
-
 }
 
 
@@ -159,7 +153,6 @@ $neo-button-ghost-border-width:       2px;
     &:focus {
       color: #3774a2;
     }
-
   }
 
   &.c-btn--secondary {
@@ -169,7 +162,6 @@ $neo-button-ghost-border-width:       2px;
     &:focus {
       color: #1d2733;
     }
-
   }
 
   &.c-btn--tertiary {
@@ -179,7 +171,5 @@ $neo-button-ghost-border-width:       2px;
     &:focus {
       color: #fff;
     }
-
   }
-
 }
