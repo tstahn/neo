@@ -1,0 +1,28 @@
+///* ========================================================================
+//   #CONFIG
+//   ======================================================================== */
+
+// Modifications (c) 2021 Tobias Stahn
+
+@use "sass:map";
+
+// A map of global config settings. Define any project-level configuration,
+// feature switches, etc. in here.
+
+$neo-config: (
+  env: dev,
+  healthcheck: false,
+  debug: true,
+);
+
+// You can access data in this map using the following function:
+//
+// neo-config(<key>)
+//
+// Example usage:
+//
+// @if (neo-config(debug) == true) { ...  }
+
+@function neo-config($key) {
+  @return map.get($neo-config, $key);
+}

@@ -1,16 +1,18 @@
 /* ==========================================================================
-   Main Test File
+   #LIST-INLINE
    ========================================================================== */
 
 // Modifications (c) 2021 Tobias Stahn
 
 /**
- * To run Sass Tests, we need to import all the test spec files here
+ * The list-inline object simply displays a list of items in one line.
  */
 
-@use 'true' as *;
+.o-list-inline {
+  margin-left: 0;
+  list-style: none;
+}
 
-@import "_tools.font-size.scss";
-@import '_utilities.widths.scss';
-
-@include report();
+.o-list-inline__item {
+  display: inline-block;
+}
