@@ -1,16 +1,13 @@
 /* ==========================================================================
-   Main Test File
+   #TABLES
    ========================================================================== */
 
 // Modifications (c) 2021 Tobias Stahn
 
 /**
- * To run Sass Tests, we need to import all the test spec files here
+ * 1. Ensure tables fill up as much space as possible.
  */
 
-@use 'true' as *;
-
-@import "_tools.font-size.scss";
-@import '_utilities.widths.scss';
-
-@include report();
+table {
+  width: 100%; /* [1] */
+}

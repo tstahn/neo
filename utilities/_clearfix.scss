@@ -1,16 +1,15 @@
 /* ==========================================================================
-   Main Test File
+   #CLEARFIX
    ========================================================================== */
 
 // Modifications (c) 2021 Tobias Stahn
 
+@use '../tools/clearfix';
+
 /**
- * To run Sass Tests, we need to import all the test spec files here
+ * Attach our clearfix mixin to a utility class.
  */
 
-@use 'true' as *;
-
-@import "_tools.font-size.scss";
-@import '_utilities.widths.scss';
-
-@include report();
+.u-clearfix {
+  @include clearfix.neo-clearfix;
+}

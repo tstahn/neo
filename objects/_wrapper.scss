@@ -1,0 +1,29 @@
+/* ==========================================================================
+   #WRAPPER
+   ========================================================================== */
+
+// Modifications (c) 2021 Tobias Stahn
+
+@use 'sass:meta';
+@use '../settings/core';
+@use '../tools/clearfix';
+
+$neo-wrapper-width:   1200px !default;
+$neo-wrapper-padding: core.$neo-global-spacing-unit !default;
+
+/**
+ * Page-level constraining and wrapping elements.
+ */
+
+@if meta.type-of($neo-wrapper-width) != number {
+  @error '`#{$neo-wrapper-width}` needs to be a number.';
+}
+
+.o-wrapper {
+  @include clearfix.neo-clearfix;
+  padding-right: $neo-wrapper-padding;
+  padding-left: $neo-wrapper-padding;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $neo-wrapper-width;
+}

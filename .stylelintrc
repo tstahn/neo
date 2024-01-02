@@ -5,11 +5,11 @@
   ],
   "ignoreFiles": [
     "./*.md",
-    "./generic/_generic.normalize.scss",
+    "./generic/_normalize.scss",
     "./tools/*.scss",
     "./settings/*.scss",
-    "./test/*.scss",
-    "./test/*.css"
+    "./test/**/*.scss",
+    "./test/**/*.css"
   ],
   "rules": {
     "stylistic/at-rule-name-newline-after": "always-multi-line",
