@@ -39,14 +39,12 @@ above, there are a handful of things we need to do before we’re ready to go.
 
 Firstly, we need to identify any files whose name contain the word `example`.
 These files are demo and/or scaffolding files that neo requires, but that
-you are encouraged to create and define yourself. These files, as of v6.1.0,
+you are encouraged to create and define yourself. These files, as of v7.0.0,
 are:
 
 ```
 example.main.scss
-settings/_example.settings.config.scss
-settings/_example.settings.global.scss
-components/_example.components.buttons.scss
+components/_example.buttons.scss
 ```
 
 Here’s what we need to do with them:
@@ -54,51 +52,27 @@ Here’s what we need to do with them:
 ### [`example.main.scss`](https://github.com/tstahn/neo/blob/master/example.main.scss)
 
 This is your main, or _manifest_, file. This is the backbone of any neo
-project, and it is responsible for `@import`ing all other files. This is the
+project, and it is responsible for `@use`ing all other files. This is the
 file that we compile out into a corresponding CSS file.
 
 You need to copy this file from the directory that your package manager
 installed it into, and move it to the root of your `css/` directory. Once there,
 rename it `main.scss`.
 
-Next, you’ll need to update all of the `@import`s in that file to point at the
+Next, you’ll need to update all of the `@use`s in that file to point at the
 new locations of each partial (that will depend on how your project is set up).
 
 Once you’ve done this, you should be able to run the following command on that
 file and get a compiled stylesheet without any errors:
 
 ```
-path/to/css/$ sass main.scss:main.css
+path/to/css/$ node_modules/.bin/sass main.scss:main.css
 ```
 
 **N.B.** If you downloaded neo, you do not need to move this file; you
 can simply rename it.
 
-### [`_example.settings.config.scss`](https://github.com/tstahn/neo/blob/master/settings/_example.settings.config.scss)
-
-This is a configuration file that neo uses to handle the state, location,
-or environment of your project. This handles very high-level settings that don’t
-necessarily affect the CSS itself, but can be used to manipulate things
-depending on where you are running things (e.g. turning a debugging mode on, or
-telling your CI sever that you’re compiling for production).
-
-Copy this file into your own `css/settings/` directory and rename it
-`_settings.config.scss`.
-
-**N.B.** If you downloaded neo, you do not need to move this this file; you
-can simply rename it.
-
-### [`_example.settings.global.scss`](https://github.com/tstahn/neo/blob/master/settings/_example.settings.global.scss)
-
-This is an example globals file; it contains any settings that are available to
-your entire project. These variables and settings could be font families,
-colours, border-radius values, etc.
-
-Copy this file into your own `css/settings/` directory and rename it
-`_settings.global.scss`. Now you can begin adding your own project-wide
-settings.
-
-### [`_example.components.buttons.scss`](https://github.com/tstahn/neo/blob/master/components/_example.components.buttons.scss)
+### [`_example.buttons.scss`](https://github.com/tstahn/neo/blob/master/components/_example.buttons.scss)
 
 You don’t need to really do much with this file other than ensure you don’t let
 it into your final project!
@@ -108,7 +82,7 @@ project, because components are the one thing that neo purposefully refuses
 to provide.
 
 You can, if you wish, copy this file to your own `css/components/` directory and
-rename it `_components.buttons.scss`. You can now use this file as the basis for
+rename it `_buttons.scss`. You can now use this file as the basis for
 your own buttons component.
 
 ## CSS directory structure
@@ -128,59 +102,53 @@ Following this structure allows you to intersperse neo’s code with your own, s
 
 ```scss
 // SETTINGS
-@import "settings/settings.config";
-@import "node_modules/neo/settings/settings.core";
-@import "settings/settings.global";
-@import "settings/settings.colors";
+// `@use` in partials as needed, no need to include here.
 
 // TOOLS
-@import "node_modules/neo/tools/tools.font-size";
-@import "node_modules/neo/tools/tools.clearfix";
-@import "node_modules/sass-mq/mq";
-@import "tools/tools.aliases";
+// `@use` in partials as needed, no need to include here.
 
 // GENERIC
-@import "node_modules/neo/generic/generic.box-sizing";
-@import "node_modules/neo/generic/generic.normalize";
-@import "node_modules/neo/generic/generic.shared";
+@use 'node_modules/neo/generic/box-sizing';
+@use 'node_modules/neo/generic/normalize';
+@use 'node_modules/neo/generic/shared';
 
 // ELEMENTS
-@import "node_modules/neo/elements/elements.page";
-@import "node_modules/neo/elements/elements.headings";
-@import "elements/elements.links";
-@import "elements/elements.quotes";
+@use 'node_modules/neo/elements/page';
+@use 'node_modules/neo/elements/headings';
+@use 'elements/links';
+@use 'elements/quotes';
 
 // OBJECTS
-@import "node_modules/neo/objects/objects.layout";
-@import "node_modules/neo/objects/objects.media";
-@import "node_modules/neo/objects/objects.flag";
-@import "node_modules/neo/objects/objects.list-bare";
-@import "node_modules/neo/objects/objects.list-inline";
-@import "node_modules/neo/objects/objects.box";
-@import "node_modules/neo/objects/objects.block";
-@import "node_modules/neo/objects/objects.table";
+@use 'node_modules/neo/objects/layout';
+@use 'node_modules/neo/objects/media';
+@use 'node_modules/neo/objects/flag';
+@use 'node_modules/neo/objects/list-bare';
+@use 'node_modules/neo/objects/list-inline';
+@use 'node_modules/neo/objects/box';
+@use 'node_modules/neo/objects/block';
+@use 'node_modules/neo/objects/table';
 
 // COMPONENTS
-@import "components/components.buttons";
-@import "components/components.page-head";
-@import "components/components.page-foot";
-@import "components/components.site-nav";
-@import "components/components.ads";
-@import "components/components.promo";
+@use 'components/buttons';
+@use 'components/page-head';
+@use 'components/page-foot';
+@use 'components/site-nav';
+@use 'components/ads';
+@use 'components/promo';
 
 // UTILITIES
-@import "node_modules/neo/utilities/utilities.widths";
-@import "node_modules/neo/utilities/utilities.headings";
-@import "node_modules/neo/utilities/utilities.spacings";
+@use 'node_modules/neo/utilities/widths';
+@use 'node_modules/neo/utilities/headings';
+@use 'node_modules/neo/utilities/spacings';
 ```
 
-**NOTE:** Every `@import` above which begins with "node_modules" is neo core.
+**NOTE:** Every `@use` above which begins with 'node_modules' is neo core.
 
 Having your own and neo’s partials interlaced like this is one of the real strengths of neo.
 
 ## Core functionality
 
-Before neo can do anything, it needs to know your base `font-size` and `line-height`. These settings are stored in `settings.core` (as `$neo-global-font-size` and `$neo-global-line-height`), and can be overridden in the same way you’d [override any of neo’s config](#modifying-neo).
+Before neo can do anything, it needs to know your base `font-size` and `line-height`. These settings are stored in `settings/_core` (as `$neo-global-font-size` and `$neo-global-line-height`), and can be overridden in the same way you’d [override any of neo’s config](#modifying-neo).
 
 Probably the most opinionated thing neo will ever do is reassign your `$neo-global-line-height` variable to `$neo-global-spacing-unit`. This value then becomes the cornerstone of your UI, acting as the default margin and padding value for any components that require it.
 
@@ -191,23 +159,26 @@ While this might seem overly opinionated, it does mean that:
 
 ## Modifying neo
 
-neo is highly configurable, but **should not be edited directly**. The correct way to make changes to neo is to pass in variables **before** you `@import` the specific file. Let’s take [`settings.core`](https://github.com/tstahn/neo/blob/develop/settings/_settings.core.scss) as an example—in this file we can see the variables `$neo-global-font-size` and `$neo-global-line-height`. If we want to keep these as-is then we needn’t do anything other than `@import` the file. If we wanted to change these values to `12px` and `18px` respectively (don’t worry, neo will convert these pixel values to rems for you) then we just need to pass those values in before the `@import`, thus:
+neo is highly configurable, but **should not be edited directly**. The correct way to make changes to neo is to pass in variables while `@use`ing the specific file. Let’s take [`settings/_core`](https://github.com/tstahn/neo/blob/develop/settings/_core.scss) as an example—in this file we can see the variables `$neo-global-font-size` and `$neo-global-line-height`. If we want to keep these as-is then we needn’t do anything other than `@use` the file. If we wanted to change these values to `12px` and `18px` respectively (don’t worry, neo will convert these pixel values to rems for you) then we just need to pass those values in `@use`ing, thus:
 
 ```scss
-$neo-global-font-size:   12px;
-$neo-global-line-height: 18px;
-@import "node_modules/neo/settings/settings.core";
+@use 'node_modules/neo/settings/core' with (
+  $neo-global-font-size:   12px,
+  $neo-global-line-height: 18px
+);
 ```
 
-The same goes for any neo module: you can configure it by predefining any
-of its variables immediately before the `@import`:
+The same goes for any neo module: you can configure it by overriding any
+of its `!default` variables immediately in the `@use`:
 
 ```scss
-$neo-wrapper-width: 1480px;
-@import "node_modules/neo/objects/objects.wrapper";
+@use 'node_modules/neo/objects/_wrapper' with (
+  $neo-wrapper-width: 1480px
+);
 
-$neo-fractions: 1 2 3 4 12;
-@import "node_modules/neo/utilities/utilities.widths";
+@use 'node_modules/neo/objects/_widths' with (
+  $neo-fractions: 1 2 3 4 12
+);
 ```
 
 This method of modifying the framework means that you don’t need to edit any
@@ -215,9 +186,11 @@ files directly (thus making it easier to update the framework), but also means
 that you’re not left with huge, bloated, monolithic variables files from which
 you need to configure an entire library.
 
+For further information on configuring modules, see the [Sass Documentation](https://sass-lang.com/documentation/at-rules/use/#configuration).
+
 ## Extending neo
 
-To extend neo with your own code, simply create a partial in the `<section>.<file>` format, put it into the [appropriate directory](#css-directory-structure) and `@import` it in your `main.scss`.
+To extend neo with your own code, simply create a partial in the `<section>/<file>` format, put it into the [appropriate directory](#css-directory-structure) and `@use` it in your `main.scss`.
 
 But extending neo does not only mean adding your own partials to the project. Due to neo’s modular nature, you can also omit those partials of neo you don't need. But be aware that there are a few interdependencies between various neo partials. The only partial that is indispensable for the framework to work properly is `settings.core`, though. But we recommend using all partials from the `/settings`, `/tools` and `/generic` layer.
 
@@ -225,14 +198,16 @@ But extending neo does not only mean adding your own partials to the project. Du
 
 In order to avoid clashes with your own code, all of neo’s mixins and
 variables are namespaced with `neo-`, for example: `$neo-global-spacing-unit`.
-These variables and mixins can become very tedious and time consuming to type
+These variables and mixins can become very tedious and time-consuming to type
 over and over, so it is recommended that you alias them to something a little
-shorter. You can do this by creating a `tools.aliases` file
-(`tools/_tools.aliases.scss`) which would be populated with code like this:
+shorter. You can do this by creating a `aliases` file
+(`tools/_aliases.scss`) which would be populated with code like this:
 
 ```scss
+@use 'node_modules/neo/settings/core';
+
 // Reassign `$neo-global-spacing-unit` to `$unit`.
-$unit: $neo-global-spacing-unit;
+$unit: core.$neo-global-spacing-unit;
 
 // Reassign lengthy font-size mixin to `font-size()`.
 @mixin font-size($args...) {
