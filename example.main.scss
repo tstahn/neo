@@ -53,7 +53,6 @@
  * Layout...............Generic layout module.
  * Media................Image- and text-like content side by side. The
  *                      poster-child of OOCSS.
- * Flag.................Table-layout-based advancement on the Media object.
  * List-bare............Lists with no bullets or indents.
  * List-inline..........A list whose items all site in a line.
  * Box..................Simple boxing abstraction.
@@ -119,7 +118,6 @@
 @use 'objects/wrapper';
 @use 'objects/layout';
 @use 'objects/media';
-@use 'objects/flag';
 @use 'objects/list-bare';
 @use 'objects/list-inline';
 @use 'objects/box';
