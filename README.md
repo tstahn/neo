@@ -121,7 +121,6 @@ Following this structure allows you to intersperse neo’s code with your own, s
 // OBJECTS
 @use 'node_modules/neo/objects/layout';
 @use 'node_modules/neo/objects/media';
-@use 'node_modules/neo/objects/flag';
 @use 'node_modules/neo/objects/list-bare';
 @use 'node_modules/neo/objects/list-inline';
 @use 'node_modules/neo/objects/box';
