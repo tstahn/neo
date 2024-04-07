@@ -6,6 +6,7 @@
   "ignoreFiles": [
     "./*.md",
     "./generic/_normalize.scss",
+    "./vendor/sass-mq/_mq.scss",
     "./tools/*.scss",
     "./settings/*.scss",
     "./test/**/*.scss",
