@@ -102,10 +102,11 @@ Following this structure allows you to intersperse neo’s code with your own, s
 
 ```scss
 // SETTINGS
-// `@use` in partials as needed, no need to include here.
+// `@use` in partials as needed and/or initialize module with default values first
 
 // TOOLS
-// `@use` in partials as needed, no need to include here.
+// `@use` in partials as needed and/or initialize module with default values first, e.g.
+// @use 'tools/mq' with ($breakpoints: core.$neo-mq-breakpoints);
 
 // GENERIC
 @use 'node_modules/neo/generic/box-sizing';

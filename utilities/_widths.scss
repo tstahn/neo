@@ -168,8 +168,6 @@ $neo-widths-breakpoint-separator: \@ !default;
  */
 $neo-mq-breakpoints: null !default;
 
-@debug $neo-mq-breakpoints;
-
 @if $neo-mq-breakpoints != null {
   @each $neo-bp-name, $neo-bp-value in $neo-mq-breakpoints {
     @include mq.mq($from: $neo-bp-name) {

@@ -78,7 +78,7 @@ $neo-widths-breakpoint-separator:   \@ !default;
 $neo-responsive-spacing-directions: null !default;
 $neo-responsive-spacing-properties: null !default;
 $neo-responsive-spacing-sizes:      null !default;
-$neo-breakpoints:                   null !default;
+$neo-mq-breakpoints:                null !default;
 
 
 
@@ -94,7 +94,7 @@ $neo-breakpoints:                   null !default;
     @each $property-namespace, $property in $neo-responsive-spacing-properties {
       @each $direction-namespace, $direction-rules in $neo-responsive-spacing-directions {
         @each $size-namespace, $size in $neo-responsive-spacing-sizes {
-          @each $neo-bp-name, $neo-bp-value in $neo-breakpoints {
+          @each $neo-bp-name, $neo-bp-value in $neo-mq-breakpoints {
             @include mq.mq($from: $neo-bp-name) {
 
               .u-#{$property-namespace}#{$direction-namespace}#{$size-namespace}#{$neo-widths-breakpoint-separator}#{$neo-bp-name} {
