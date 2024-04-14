@@ -79,17 +79,15 @@
  */
 
 // SETTINGS
-// `@use` in partials as needed, no need to include here.
+// `@use` in partials as needed
 
 
 
 
 
 // TOOLS
-// `@use` in partials as needed, no need to include here.
-
-
-
+// `@use` in partials as needed and/or initialize module with default values first, e.g.
+// @use 'tools/mq' with ($breakpoints: core.$neo-mq-breakpoints);
 
 
 // GENERIC
