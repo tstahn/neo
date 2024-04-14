@@ -6,7 +6,7 @@
 
 @use 'sass:math';
 @use 'sass:meta';
-@use '../vendor/sass-mq/mq';
+@use '../tools/mq';
 
 /**
  * neo generates a series of utility classes that give a fluid width to
@@ -166,10 +166,12 @@ $neo-widths-breakpoint-separator: \@ !default;
  *
  * <div class="u-3/12@mobile">
  */
-$neo-breakpoints: null !default;
+$neo-mq-breakpoints: null !default;
 
-@if $neo-breakpoints != null {
-  @each $neo-bp-name, $neo-bp-value in $neo-breakpoints {
+@debug $neo-mq-breakpoints;
+
+@if $neo-mq-breakpoints != null {
+  @each $neo-bp-name, $neo-bp-value in $neo-mq-breakpoints {
     @include mq.mq($from: $neo-bp-name) {
       @include neo-widths($neo-fractions, #{$neo-widths-breakpoint-separator}#{$neo-bp-name});
     }
