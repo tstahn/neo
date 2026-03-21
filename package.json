@@ -4,7 +4,7 @@
   "description": "Extensible, scalable, Sass-based, OOCSS framework for large and long-lasting UI projects.",
   "main": "example.main.scss",
   "scripts": {
-    "test": "npm run lint && mocha test/run.js",
+    "test": "npm run lint && vitest",
     "lint": "stylelint \"**/*.scss\""
   },
   "repository": {
@@ -24,16 +24,19 @@
     "url": "https://github.com/tstahn/neo/issues"
   },
   "homepage": "https://github.com/tstahn/neo#readme",
-  "devDependencies": {
-    "glob": "^7.2.0",
-    "mocha": "^9.1.3",
-    "sass": "^1.43.3",
-    "sass-true": "^6.0.1",
-    "stylelint": "^15.11.0",
-    "stylelint-config-standard-scss": "^11.1.0",
-    "stylelint-stylistic": "^0.4.3"
-  },
   "directories": {
     "test": "test"
+  },
+  "devDependencies": {
+    "glob": "^7.2.0",
+    "sass": "^1.98.0",
+    "sass-true": "^10.1.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-stylistic": "^0.4.3",
+    "vitest": "^4.1.0"
+  },
+  "peerDependencies": {
+    "sass": ">=1.49.0 <2.0.0"
   }
 }

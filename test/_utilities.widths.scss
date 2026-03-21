@@ -1,7 +1,7 @@
 // Modifications (c) 2021 Tobias Stahn
 
 @use 'true' as *;
-@import "../utilities/widths";
+@use "../utilities/widths";
 
 
 
@@ -12,7 +12,7 @@
     @include assert() {
 
       @include output {
-        @include neo-widths(1 2 3);
+        @include widths.neo-widths(1 2 3);
       }
 
       @include expect {

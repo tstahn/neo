@@ -1,8 +1,8 @@
 // Modifications (c) 2021 Tobias Stahn
 
 @use 'true' as *;
-@import "../settings/core";
-@import "../tools/font-size";
+@use "../settings/core";
+@use "../tools/font-size";
 
 
 
@@ -13,7 +13,7 @@
     @include assert() {
 
       @include output {
-        @include neo-font-size(16px);
+        @include font-size.neo-font-size(16px);
       }
 
       @include expect {
@@ -29,7 +29,7 @@
     @include assert() {
 
       @include output {
-        @include neo-font-size(18px, 2);
+        @include font-size.neo-font-size(18px, 2);
       }
 
       @include expect {
@@ -45,7 +45,7 @@
     @include assert() {
 
       @include output {
-        @include neo-font-size(21px, $important: true);
+        @include font-size.neo-font-size(21px, $important: true);
       }
 
       @include expect {
@@ -61,7 +61,7 @@
     @include assert() {
 
       @include output {
-        @include neo-font-size(24px, $modifier: +2);
+        @include font-size.neo-font-size(24px, $modifier: +2);
       }
 
       @include expect {
@@ -77,7 +77,7 @@
     @include assert() {
 
       @include output {
-        @include neo-font-size(32px, $modifier: -1);
+        @include font-size.neo-font-size(32px, $modifier: -1);
       }
 
       @include expect {

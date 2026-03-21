@@ -10,7 +10,7 @@
 
 @use 'true' as *;
 
-@import "_tools.font-size.scss";
-@import '_utilities.widths.scss';
+@use '_tools.font-size.scss';
+@use '_utilities.widths.scss';
 
 @include report();
